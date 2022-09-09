@@ -1,0 +1,9 @@
+const env = {
+  DB_HOST: "localhost",
+  DB_DATABASE: "db",
+  DB_USERNAME: "mysql",
+  DB_PASSWORD: "mysql",
+  JWT_SECRET: "baurishvonces",
+};
+
+export default env;
