@@ -3,6 +3,7 @@ import cache from "../utils/cache.js";
 import jwtConfig from "../config/jwt.js";
 import jwt from "../utils/jwt.js";
 import bcrypt from "bcrypt";
+import { v4 as uuidv4 } from "uuid";
 
 export const register = async (req, res) => {
   const isExist = await User.findOne({
@@ -14,8 +15,9 @@ export const register = async (req, res) => {
     return res.status(400).json({ error: "Email already exists." });
   }
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
+  const id = uuidv4();
   const user = await User.create({
+    id,
     name: req.body.name,
     email: req.body.email,
     password: hashedPassword,
@@ -37,6 +39,7 @@ export const login = async (req, res) => {
         access_token: token,
         token_type: "Bearer",
         expires_in: jwtConfig.ttl,
+        success: true,
       });
     }
   }

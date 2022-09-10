@@ -1,0 +1,35 @@
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.emailInput{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.passwordInput{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.nameInput{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.confirmButton{
+    width: 210px;
+    height: 30px;
+    font-size: 17px;
+    background-color: coral;
+    border: 1px solid white;
+    &:hover{
+        cursor: pointer;
+        background-color: white;
+    }
+}
