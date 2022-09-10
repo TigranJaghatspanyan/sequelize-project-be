@@ -1,0 +1,16 @@
+.container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logOut {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    color: rgb(196, 13, 13);
+  }
+}

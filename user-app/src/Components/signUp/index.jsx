@@ -21,7 +21,7 @@ export default function SignUp() {
       },
     })
       .then((res) => {
-        navigate("/");
+        navigate("/login");
       })
       .catch((res) => {
         alert(res.response.data.error);
@@ -30,8 +30,8 @@ export default function SignUp() {
 
   return (
     <div className={styles.container}>
-      <h1>Sign Up</h1>
       <div className={styles.loginContainer}>
+        <h1>Sign Up</h1>
         <input
           type="text"
           placeholder="Enter your name"

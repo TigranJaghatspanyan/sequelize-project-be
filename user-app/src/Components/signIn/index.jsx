@@ -19,6 +19,7 @@ export default function Login() {
       },
     })
       .then((res) => {
+        window.localStorage.setItem("token", res.data.access_token);
         navigate("/");
       })
       .catch((res) => {
@@ -28,8 +29,8 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <h1>Sign In</h1>
       <div className={styles.loginContainer}>
+        <h1>Sign In</h1>
         <input
           type="text"
           placeholder="Enter your email"
