@@ -4,7 +4,7 @@ import logger from "morgan";
 import indexRouter from "./routes/index.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import env from "./env.js"
+import env from "./env.js";
 
 const app = express();
 dotenv.config();
@@ -17,6 +17,6 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 
-app.listen(5000, () => console.log(`Listen port ${env.PORT}`));
+app.listen(env.PORT, () => console.log(`Listen port ${env.PORT}`));
 
 export default app;

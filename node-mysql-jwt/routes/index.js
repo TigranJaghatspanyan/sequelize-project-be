@@ -15,8 +15,4 @@ router.post("/login", validate("login"), login);
 router.get("/user", authGuard, getUser);
 router.get("/logout", authGuard, logout);
 
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
-
 export default router;

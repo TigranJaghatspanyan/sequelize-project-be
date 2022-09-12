@@ -1,5 +1,5 @@
 const env = {
-  host: "http://localhost:5000",
+  host: process.env.BE_HOST ?? 'http://localhost:5000'
 };
 
 export default env;

@@ -10,6 +10,10 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
+  const userLogin = async () => {
+    await login(name, email, password, navigate);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>
@@ -35,12 +39,7 @@ export default function SignUp() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          className={styles.confirmButton}
-          onClick={() => {
-            login(name, email, password, navigate);
-          }}
-        >
+        <button className={styles.confirmButton} onClick={userLogin}>
           Sign Up
         </button>
       </div>

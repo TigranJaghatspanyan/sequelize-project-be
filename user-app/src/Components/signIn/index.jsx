@@ -9,6 +9,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const userSignIn = async () => {
+    await signIn(email, password, navigate);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>
@@ -27,12 +31,7 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          className={styles.confirmButton}
-          onClick={() => {
-            signIn(email, password, navigate);
-          }}
-        >
+        <button className={styles.confirmButton} onClick={userSignIn}>
           Login
         </button>
       </div>

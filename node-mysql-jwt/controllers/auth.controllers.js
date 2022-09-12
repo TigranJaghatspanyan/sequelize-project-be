@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
 
 export const register = async (req, res) => {
-  const { email, name } = req.body;
+  const { email, name, password } = req.body;
   const isExist = await User.findOne({
     where: {
       email: email,
@@ -16,10 +16,8 @@ export const register = async (req, res) => {
   if (isExist) {
     return res.status(400).json({ error: "Email already exists." });
   }
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  const id = uuidv4();
+  const hashedPassword = await bcrypt.hash(password, 10);
   const user = await User.create({
-    id,
     name: name,
     email: email,
     password: hashedPassword,
@@ -36,23 +34,21 @@ export const login = async (req, res) => {
   });
   if (user) {
     const isMatched = await bcrypt.compare(password, user.password);
-    if (isMatched) {
-      const token = await jwt.createToken({ id: user });
-      return res.json({
-        access_token: token,
-        token_type: "Bearer",
-        expires_in: jwtConfig.ttl,
-        success: true,
-      });
-    } else {
+    if (!isMatched) {
       throw new Error("Your token is invalid");
     }
+    const token = await jwt.createToken({ id: user });
+    return res.json({
+      access_token: token,
+      token_type: "Bearer",
+      expires_in: jwtConfig.ttl,
+    });
   }
   throw new Error("Please check login or password");
 };
 
 export const getUser = async (req, res) => {
-  const user = await User.findByPk(req.user);
+  const user = await User.findByPk(req.user.id);
   return res.json(user);
 };
 
