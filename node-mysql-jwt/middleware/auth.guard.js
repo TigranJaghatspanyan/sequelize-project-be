@@ -1,7 +1,7 @@
 import cache from "../utils/cache.js";
 import jwt from "../utils/jwt.js";
 
-export default async (req, res, next) => {
+const auth = async (req, res, next) => {
   let token = req.headers.authorization;
   if (token && token.startsWith("Bearer ")) {
     token = token.slice(7, token.length);
@@ -26,3 +26,5 @@ export default async (req, res, next) => {
     return res.status(400).json({ error: "Authorization header is missing." });
   }
 };
+
+export default auth;

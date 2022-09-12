@@ -1,4 +1,4 @@
-import DataTypes from "sequelize"
+import DataTypes from "sequelize";
 import sequelize from "./connection.js";
 
 const User = sequelize.define(
@@ -20,4 +20,4 @@ const User = sequelize.define(
   }
 );
 
-export default User
+export default User;

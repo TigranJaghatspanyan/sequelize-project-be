@@ -1,9 +1,10 @@
 const env = {
-  DB_HOST: "localhost",
-  DB_DATABASE: "db",
-  DB_USERNAME: "mysql",
-  DB_PASSWORD: "mysql",
+  host: process.env.DB_HOST ?? "localhost",
+  database: process.env.DB_DATABASE ?? "db",
+  username: process.env.DB_USERNAME ?? "mysql",
+  password: process.env.DB_PASSWORD ?? "mysql",
   JWT_SECRET: "baurishvonces",
+  PORT: "5000",
 };
 
 export default env;

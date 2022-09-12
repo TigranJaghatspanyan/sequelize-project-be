@@ -1,6 +1,6 @@
-body{
-    background-image: url("../src/images/bg.png");
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-decoration: none;
-    list-style: none;
+body {
+  background-image: url("../src/images/bg.png");
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-decoration: none;
+  list-style: none;
 }

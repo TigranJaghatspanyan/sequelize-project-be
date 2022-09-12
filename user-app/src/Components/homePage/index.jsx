@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./homePage.module.scss";
 import axios from "axios";
-import { useState } from "react";
+import redirect from "../../const/redirect";
+import env from "../../const/env.js";
+
+import styles from "./homePage.module.scss";
 
 export default function Home() {
   const [userName, setUserName] = useState("");
-  axios.get("http://localhost:5000/user").then((res) => {
+  axios.get(`${env}/user`).then((res) => {
     console.log(res.data);
   });
 
   const token = window.localStorage.getItem("token");
 
   axios
-    .get("http://localhost:5000/user", {
+    .get(`${env.host}/user`, {
       headers: {
         Authorization: token,
       },
@@ -27,14 +29,15 @@ export default function Home() {
     });
 
   const logOut = () => {
-    window.localStorage.removeItem("token");
+    axios.post(`${env.host}/logout`).then((res) => {
+      window.localStorage.removeItem("token");
+    });
   };
-
   return (
     <div className={styles.container}>
       <div>
         <h1>Welcome {userName}</h1>
-        <Link to="/signUp" className={styles.logOut} onClick={logOut}>
+        <Link to={redirect.signUp} className={styles.logOut} onClick={logOut}>
           Log Out
         </Link>
       </div>

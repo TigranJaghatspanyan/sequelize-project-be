@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { login } from "../../service/authService";
 
 import styles from "./signup.module.scss";
 
@@ -9,24 +9,6 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const navigate = useNavigate();
-
-  const login = () => {
-    axios({
-      method: "post",
-      url: `http://localhost:5000/register`,
-      data: {
-        name,
-        email,
-        password,
-      },
-    })
-      .then((res) => {
-        navigate("/login");
-      })
-      .catch((res) => {
-        alert(res.response.data.error);
-      });
-  };
 
   return (
     <div className={styles.container}>
@@ -53,7 +35,12 @@ export default function SignUp() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className={styles.confirmButton} onClick={login}>
+        <button
+          className={styles.confirmButton}
+          onClick={() => {
+            login(name, email, password, navigate);
+          }}
+        >
           Sign Up
         </button>
       </div>
