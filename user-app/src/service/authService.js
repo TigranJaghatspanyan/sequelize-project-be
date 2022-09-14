@@ -49,9 +49,6 @@ export const users = async (name) => {
   try {
     const response = await axiosInstance.post(`${redirectUrls.user}`, {
       name: name,
-      headers: {
-        Authorization: token,
-      },
     });
     return response.data;
   } catch (err) {
