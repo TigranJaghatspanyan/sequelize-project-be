@@ -1,5 +1,5 @@
-import Login from "./Components/signIn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Components/signIn";
 import SignUp from "./Components/signUp";
 import Home from "./Components/homePage";
 import redirectUrls from "./const/redirect";

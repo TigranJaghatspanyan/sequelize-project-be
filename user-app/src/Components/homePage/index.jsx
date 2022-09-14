@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import redirectUrls from "../../const/redirect";
 import env from "../../const/env.js";
-import { logOut } from "../../service/authService.js";
+// import { logOut } from "../../service/authService.js";
 
 import styles from "./homePage.module.scss";
 
 export default function Home() {
   const [userName, setUserName] = useState("");
-  axios.get(`${env}/user`).then((res) => {
-    console.log(res.data , "aizizizi");
+  const logOut = axios.post(`${env.host}/user`).then((res) => {
+    console.log(res.data);
   });
 
   return (

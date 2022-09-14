@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../service/authService";
+import redirectUrls from "../../const/redirect";
 
 import styles from "./signup.module.scss";
 
@@ -12,6 +13,7 @@ export default function SignUp() {
 
   const userLogin = async () => {
     await login(name, email, password, navigate);
+    navigate(`/${redirectUrls.login}`);
   };
 
   return (
