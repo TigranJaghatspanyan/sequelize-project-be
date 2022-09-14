@@ -1,3 +1,9 @@
+body {
+  background-image: url("../../images/bg.png");
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 .container {
   height: 90vh;
   display: flex;
@@ -9,7 +15,7 @@
   text-align: center;
   font-size: 30px;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
   &:hover {
     cursor: pointer;
     color: rgb(196, 13, 13);

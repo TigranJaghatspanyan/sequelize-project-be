@@ -1,6 +1,8 @@
 import redirectUrls from "../const/redirect.js";
 import axiosInstance from "./axiosInstance.js";
 
+const token = window.localStorage.getItem("token");
+
 export const login = async (name, email, password, navigate) => {
   try {
     const response = await axiosInstance.post(`${redirectUrls.signUp}`, {
@@ -29,14 +31,14 @@ export const signIn = async (email, password, navigate) => {
   }
 };
 
-const token = window.localStorage.getItem("token");
-
 export const logOut = async () => {
   try {
+    window.localStorage.removeItem("token");
     const response = await axiosInstance.post(`${redirectUrls.logOut}`, {
       token,
     });
-    window.localStorage.removeItem("token");
+    if (response) {
+    }
     return response.data;
   } catch (err) {
     console.log(err);
@@ -46,9 +48,6 @@ export const logOut = async () => {
 export const users = async (name) => {
   try {
     const response = await axiosInstance.post(`${redirectUrls.user}`, {
-      headers: {
-        Authorization: token,
-      },
       name: name,
     });
     return response.data;

@@ -10,7 +10,7 @@ import styles from "./homePage.module.scss";
 export default function Home() {
   const [userName, setUserName] = useState("");
   axios.get(`${env}/user`).then((res) => {
-    console.log(res.data);
+    console.log(res.data , "aizizizi");
   });
 
   return (

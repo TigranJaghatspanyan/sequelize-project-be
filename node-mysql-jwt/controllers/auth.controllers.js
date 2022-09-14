@@ -4,13 +4,11 @@ import jwtConfig from "../config/jwt.js";
 import jwt from "../utils/jwt.js";
 import bcrypt from "bcrypt";
 
-import { v4 as uuidv4 } from "uuid";
-
 export const register = async (req, res) => {
   const { email, name, password } = req.body;
   const isExist = await User.findOne({
     where: {
-      email: email,
+      email
     },
   });
   if (isExist) {
@@ -18,8 +16,8 @@ export const register = async (req, res) => {
   }
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await User.create({
-    name: name,
-    email: email,
+    name,
+    email,
     password: hashedPassword,
   });
   return res.json(user);
@@ -29,7 +27,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({
     where: {
-      email: email,
+      email
     },
   });
   if (user) {
@@ -49,6 +47,7 @@ export const login = async (req, res) => {
 
 export const getUser = async (req, res) => {
   const user = await User.findByPk(req.user.id);
+  console.log(user,"useer");
   return res.json(user);
 };
 
