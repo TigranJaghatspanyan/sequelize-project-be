@@ -13,7 +13,7 @@ export default function SignUp() {
 
   const userLogin = async () => {
     await login(name, email, password, navigate);
-    navigate(`/${redirectUrls.login}`);
+    navigate(`${redirectUrls.home}`);
   };
 
   return (

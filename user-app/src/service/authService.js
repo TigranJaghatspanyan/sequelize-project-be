@@ -10,7 +10,8 @@ export const login = async (name, email, password, navigate) => {
       email: email,
       password: password,
     });
-    navigate(`/${redirectUrls.login}`);
+    window.localStorage.setItem("token", response.data.access_token);
+    navigate(`/${redirectUrls.home}`);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -23,22 +24,22 @@ export const signIn = async (email, password, navigate) => {
       email: email,
       password: password,
     });
-    window.localStorage.setItem("token", response.data.access_token);
     navigate(`${redirectUrls.home}`);
+    console.log(response.data, "DTATATATATTA");
     return response.data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const logOut = async () => {
+export const logOut = async (email, password) => {
   try {
     window.localStorage.removeItem("token");
     const response = await axiosInstance.post(`${redirectUrls.logOut}`, {
       token,
+      email,
+      password,
     });
-    if (response) {
-    }
     return response.data;
   } catch (err) {
     console.log(err);

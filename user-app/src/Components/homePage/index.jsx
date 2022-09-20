@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import redirectUrls from "../../const/redirect";
-import env from "../../const/env.js";
 import { logOut } from "../../service/authService.js";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./homePage.module.scss";
 
 export default function Home() {
   const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
 
-  const logout = async () => {
+  const logout = async (email, password) => {
     await logOut(email, password, navigate);
-    navigate(`${redirectUrls.home}`);
+    console.log(email,"email");
+    console.log(password,"email");
+    navigate(`${redirectUrls.login}`);
   };
 
   return (
