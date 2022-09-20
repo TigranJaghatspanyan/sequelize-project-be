@@ -24,8 +24,8 @@ export const signIn = async (email, password, navigate) => {
       email: email,
       password: password,
     });
+    window.localStorage.setItem("token", response.data.access_token);
     navigate(`${redirectUrls.home}`);
-    console.log(response.data, "DTATATATATTA");
     return response.data;
   } catch (err) {
     console.log(err);

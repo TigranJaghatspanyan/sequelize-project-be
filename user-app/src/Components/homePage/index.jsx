@@ -12,8 +12,6 @@ export default function Home() {
 
   const logout = async (email, password) => {
     await logOut(email, password, navigate);
-    console.log(email,"email");
-    console.log(password,"email");
     navigate(`${redirectUrls.login}`);
   };
 
